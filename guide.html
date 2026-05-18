@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Практическое руководство — Снижение принудительных мер</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif; color: #1a1a2e; background: #fafbfc;
+  line-height: 1.7;
+}
+
+/* Header */
+.guide-header {
+  background: #1B2A4A; color: #fff; padding: 80px 40px 60px; text-align: center;
+}
+.guide-header h1 {
+  font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; margin-bottom: 12px;
+  letter-spacing: -1px;
+}
+.guide-header p {
+  font-size: 18px; color: rgba(255,255,255,.65); max-width: 600px; margin: 0 auto;
+}
+.guide-header .meta {
+  margin-top: 24px; font-size: 14px; color: rgba(255,255,255,.4);
+}
+
+/* Navigation */
+.guide-nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid #eef0f2; padding: 0 40px;
+  display: flex; align-items: center; gap: 24px; overflow-x: auto;
+  height: 56px;
+}
+.guide-nav a {
+  text-decoration: none; color: #636e72; font-size: 13px; font-weight: 500;
+  white-space: nowrap; transition: color .2s;
+}
+.guide-nav a:hover { color: #1B2A4A; }
+.guide-nav .back {
+  font-weight: 600; color: #2C6E6F; margin-right: auto;
+}
+
+/* Container */
+.container { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; }
+
+/* Sections */
+.guide-section { margin-bottom: 60px; }
+.guide-section .number {
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+  color: #2C6E6F; margin-bottom: 8px;
+}
+.guide-section h2 {
+  font-size: clamp(24px, 2.5vw, 32px); font-weight: 700; color: #1B2A4A;
+  margin-bottom: 20px; letter-spacing: -.5px;
+}
+.guide-section h3 {
+  font-size: 20px; font-weight: 700; color: #1B2A4A; margin-top: 32px; margin-bottom: 12px;
+}
+.guide-section p { font-size: 16px; color: #4a5568; margin-bottom: 16px; }
+.guide-section ul, .guide-section ol { font-size: 16px; color: #4a5568; padding-left: 24px; margin-bottom: 16px; }
+.guide-section li { margin-bottom: 8px; }
+
+/* Cards */
+.callout {
+  background: #f0f5f7; border-left: 4px solid #2C6E6F; border-radius: 0 8px 8px 0;
+  padding: 20px 24px; margin: 24px 0;
+}
+.callout strong { color: #1B2A4A; display: block; margin-bottom: 4px; }
+.callout p { margin-bottom: 0; font-size: 15px; }
+
+.callout.navy { border-left-color: #1B2A4A; }
+
+.checklist { list-style: none; padding-left: 0 !important; }
+.checklist li {
+  padding: 10px 16px 10px 40px; position: relative; border-bottom: 1px solid #eef0f2;
+}
+.checklist li::before {
+  content: ''; position: absolute; left: 12px; top: 14px;
+  width: 16px; height: 16px; border: 2px solid #2C6E6F; border-radius: 3px;
+}
+
+/* Step cards */
+.step-card {
+  background: #fff; border: 1px solid #eef0f2; border-radius: 12px;
+  padding: 28px; margin-bottom: 16px;
+}
+.step-card .step-num {
+  display: inline-block; background: #1B2A4A; color: #fff;
+  width: 28px; height: 28px; border-radius: 50%; text-align: center;
+  line-height: 28px; font-size: 14px; font-weight: 700; margin-right: 10px;
+}
+.step-card h4 { display: inline; font-size: 18px; font-weight: 700; color: #1B2A4A; }
+.step-card p { margin-top: 12px; font-size: 15px; color: #636e72; }
+
+/* Table */
+table {
+  width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px;
+}
+th {
+  background: #1B2A4A; color: #fff; padding: 12px 16px; text-align: left;
+  font-weight: 600;
+}
+td {
+  padding: 12px 16px; border-bottom: 1px solid #eef0f2; color: #4a5568;
+}
+tr:nth-child(even) td { background: #f8f9fa; }
+
+/* Print */
+@media print {
+  .guide-nav { display: none; }
+  .guide-header { padding: 40px 20px; }
+  body { background: #fff; font-size: 12pt; }
+  .container { max-width: 100%; padding: 24px; }
+  .step-card { break-inside: avoid; }
+}
+
+@media (max-width: 768px) {
+  .guide-header { padding: 48px 20px 40px; }
+  .guide-nav { padding: 0 16px; gap: 16px; }
+  .container { padding: 24px 16px; }
+}
+</style>
+</head>
+<body>
+
+<header class="guide-header">
+  <h1>Снижение принудительных мер</h1>
+  <p>Практическое руководство для руководителей и специалистов</p>
+  <div class="meta">ЦЛП «Особое детство» · 2026</div>
+</header>
+
+<nav class="guide-nav">
+  <a href="landing.html" class="back">← На лендинг</a>
+  <a href="#intro">Введение</a>
+  <a href="#approach1">1. Среда</a>
+  <a href="#approach2">2. Контакт</a>
+  <a href="#approach3">3. Коммуникация</a>
+  <a href="#approach4">4. Восстановление</a>
+  <a href="#roadmap">Дорожная карта</a>
+  <a href="#resources">Ресурсы</a>
+</nav>
+
+<div class="container">
+
+<section id="intro" class="guide-section">
+  <div class="number">Введение</div>
+  <h2>О чём это руководство</h2>
+  <p>Это практическое руководство — не теория, а набор рабочих инструментов. Оно создано для руководителей ПНИ, директоров интернатов и специалистов, которые хотят системно снизить использование принудительных мер (фиксации, изоляция, PRN медикаменты) в своих учреждениях.</p>
+
+  <div class="callout">
+    <strong>Ключевое сообщение</strong>
+    <p>Снижение принуждения — это не утопия, а управленческая и методическая задача. Её решение ведёт к снижению травм, выгорания персонала, жалоб и соответствует современным стандартам качества помощи.</p>
+  </div>
+
+  <h3>Что внутри</h3>
+  <ul>
+    <li>Четыре проверенных направления работы</li>
+    <li>Пошаговые алгоритмы для каждого направления</li>
+    <li>Чек-листы для внедрения</li>
+    <li>Дорожная карта на 6–12 месяцев</li>
+    <li>Ссылки на источники и материалы</li>
+  </ul>
+
+  <h3>Три главных правила</h3>
+  <ol>
+    <li><strong>Поведение — это коммуникация.</strong> Любое проблемное поведение имеет причину, и наша задача — понять её, а не подавить.</li>
+    <li><strong>Изменения начинаются со среды, а не с человека.</strong> Часто достаточно изменить физическое пространство, расписание или стиль общения, чтобы поведение изменилось само.</li>
+    <li><strong>Начинать с малого.</strong> Выберите одно отделение, одну проблему, один инструмент. Не пытайтесь изменить всё сразу.</li>
+  </ol>
+</section>
+
+<section id="approach1" class="guide-section">
+  <div class="number">Направление 1</div>
+  <h2>Анализ и изменение среды</h2>
+
+  <p><strong>Суть:</strong> Поведение человека всегда происходит в определённой среде. Меняя среду, мы меняем поведение. Это не «дополнение» к лечению, а самостоятельный метод, подтверждённый исследованиями (Nidotherapy, Peter Tyrer).</p>
+
+  <h3>Три слоя среды</h3>
+
+  <table>
+    <tr><th>Слой среды</th><th>Что включает</th><th>Примеры изменений</th></tr>
+    <tr><td><strong>Физическая</strong></td><td>Пространство, освещение, акустика, температура, доступ к улице, личное пространство</td><td>Организовать «пещерку» — место для уединения; снизить уровень шума; улучшить освещение; обеспечить доступ на улицу</td></tr>
+    <tr><td><strong>Социальная</strong></td><td>Кто рядом, стиль общения, состав группы, количество персонала</td><td>Пересмотреть состав группы; обучить персонал стилю общения; обеспечить постоянство контакта</td></tr>
+    <tr><td><strong>Временная</strong></td><td>Расписание, ритм, предсказуемость событий, режим дня</td><td>Ввести визуальное расписание; обеспечить предсказуемость переходов; учесть индивидуальные биоритмы</td></tr>
+  </table>
+
+  <h3>Алгоритм: Функциональный анализ поведения</h3>
+  <div class="step-card">
+    <span class="step-num">1</span>
+    <h4>Определите поведение</h4>
+    <p>Опишите конкретно, что происходит. Не «агрессия», а «ударяет рукой по столу, когда к нему подходят сзади».</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">2</span>
+    <h4>Соберите данные: что до, что после</h4>
+    <p>Записывайте в течение 1–2 недель: что происходило непосредственно перед инцидентом, и что случилось после. Ищите паттерны.</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">3</span>
+    <h4>Определите функцию поведения</h4>
+    <p>Что человек получает с помощью этого поведения? (Внимание, избегание, сенсорную стимуляцию, доступ к желаемому?)</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">4</span>
+    <h4>Измените среду или обучите альтернативе</h4>
+    <p>Уберите триггер (если возможно) или научите приемлемому способу получить то же самое.</p>
+  </div>
+
+  <div class="callout navy">
+    <strong>Пример из практики (Tyrer et al., Lancet Psychiatry)</strong>
+    <p>Изменение распорядка дня и организации пространства в отделении позволило снизить дозировки психотропных препаратов на 40% у 60% пациентов. Изменения коснулись: времени подъёма, организации досуга, возможности уединения.</p>
+  </div>
+
+  <h3>Чек-лист: Что проверить в первую очередь</h3>
+  <ul class="checklist">
+    <li>Есть ли у каждого проживающего место для уединения?</li>
+    <li>Может ли человек влиять на расписание своего дня?</li>
+    <li>Предупреждаются ли жители о предстоящих изменениях?</li>
+    <li>Есть ли визуальное расписание (пиктограммы, фотографии)?</li>
+    <li>Достаточно ли двигательной активности в течение дня?</li>
+    <li>Разнообразна ли среда (прогулки, мастерские, библиотека, спорт)?</li>
+    <li>Проверяется ли уровень шума в отделении?</li>
+  </ul>
+
+  <p><strong>Источники:</strong> Nidotherapy (nidotherapy.com), NICE NG11, Tyrer P. et al. Clinical effectiveness of nidotherapy for co-morbid personality disorder and alcohol misuse.</p>
+</section>
+
+<section id="approach2" class="guide-section">
+  <div class="number">Направление 2</div>
+  <h2>Качество контакта и отношений</h2>
+
+  <p><strong>Суть:</strong> Характер контакта между персоналом и проживающими напрямую влияет на частоту и тяжесть инцидентов. Отношения — не «мягкий фактор», а эффективный инструмент с доказательной базой.</p>
+
+  <div class="callout">
+    <strong>Золотое правило</strong>
+    <p>«Не входить в палату без разрешения» — Gwen Schulz, Relationship-based Psychiatry. Стук в дверь, ожидание ответа, уважение к личному пространству — это не формальность, а базовая профилактика принуждения.</p>
+  </div>
+
+  <h3>Что можно сделать уже завтра</h3>
+  <ul class="checklist">
+    <li>Стучать перед входом и ждать ответа</li>
+    <li>Представляться, объяснять, зачем пришли</li>
+    <li>Спрашивать разрешения перед любым физическим контактом</li>
+    <li>Обращаться по имени, которое человек предпочитает</li>
+    <li>Давать время на ответ и принятие решения</li>
+    <li>Не стоять над человеком — присаживаться на уровень его глаз</li>
+  </ul>
+
+  <h3>Что требует системной работы</h3>
+
+  <div class="step-card">
+    <span class="step-num">1</span>
+    <h4>Обучение персонала</h4>
+    <p>Проведите тренинг по построению контакта: активное слушание, невербальная коммуникация, работа с личными границами.</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">2</span>
+    <h4>Супервизия и групповая рефлексия</h4>
+    <p>Введите регулярные обсуждения сложных случаев в формате поддерживающей супервизии, а не разбора «кто виноват».</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">3</span>
+    <h4>Индивидуальный подход</h4>
+    <p>Учитывайте историю привязанности проживающего. Многие имеют нарушения привязанности и нуждаются в особо бережном контакте.</p>
+  </div>
+
+  <h3>Важный контекст</h3>
+  <p>Проживающие в интернатах часто имеют опыт депривации: недостаток движения, впечатлений, качественного общения. Люди с психическими расстройствами наиболее уязвимы. Им особенно важно личное пространство и возможность уединения («пещерка»). Поведение, которое мы воспринимаем как «проблемное», часто оказывается реакцией на нарушение границ или сенсорную перегрузку.</p>
+
+  <p><strong>Источники:</strong> Gwen Schulz — Relationship-based Psychiatry, аудиозаписи, Упоминание.txt</p>
+</section>
+
+<section id="approach3" class="guide-section">
+  <div class="number">Направление 3</div>
+  <h2>Коммуникация и поведенческий подход</h2>
+
+  <p><strong>Суть:</strong> Проблемное поведение — это попытка что-то сообщить, когда нет других средств. Если дать человеку альтернативный, приемлемый способ получить то же самое — проблемное поведение снижается.</p>
+
+  <h3>Функции поведения (что человек получает)</h3>
+  <table>
+    <tr><th>Функция</th><th>Пример</th><th>Что делать</th></tr>
+    <tr><td><strong>Занять себя</strong></td><td>Стереотипии, самостимуляция</td><td>Предложить мотивирующие активности, разнообразить среду, обеспечить двигательную нагрузку</td></tr>
+    <tr><td><strong>Получить желаемое</strong></td><td>Кричит — дают печенье</td><td>Обучить приемлемому способу просьбы (жест, карточка, слово)</td></tr>
+    <tr><td><strong>Отказаться / избежать</strong></td><td>Отталкивает тарелку</td><td>Проверить: может, человек не голоден, устал или ему больно? Принимать отказ. Учить отказываться приемлемо</td></tr>
+    <tr><td><strong>Сообщить о дискомфорте</strong></td><td>Беспокойство, крик</td><td>Проверить боль, голод, жажду, температуру, шум, духоту. Устранить причину</td></tr>
+    <tr><td><strong>Непонимание</strong></td><td>Внезапная агрессия при смене деятельности</td><td>Предупреждать заранее, использовать визуальную поддержку, расписание</td></tr>
+  </table>
+
+  <h3>Инструменты: с чего начать</h3>
+
+  <div class="step-card">
+    <span class="step-num">1</span>
+    <h4>Наблюдение и запись</h4>
+    <p>В течение 1–2 недель фиксируйте случаи проблемного поведения: время, место, что предшествовало, что было после. Ищите паттерны.</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">2</span>
+    <h4>Определите приоритетную функцию</h4>
+    <p>Какая функция поведения встречается чаще всего? Начните с неё.</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">3</span>
+    <h4>Введите альтернативу</h4>
+    <p>Обучите приемлемому способу получить то же самое. Без вокальной речи — используйте АДК: карточки PECS, коммуникативные таблицы, жесты, планшеты.</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">4</span>
+    <h4>Подкрепляйте альтернативу</h4>
+    <p>Когда человек использует новый способ — немедленно давайте желаемое. Это закрепляет навык.</p>
+  </div>
+
+  <div class="callout navy">
+    <strong>Важно: экранное время</strong>
+    <p>Экранное время может быть эффективным мотиватором, но в чрезмерном количестве провоцирует нездоровое возрастание уровня возбуждения и может приводить к агрессивному и аутоагрессивному поведению. Контролируйте дозировку.</p>
+  </div>
+
+  <h3>Молчать или информировать?</h3>
+  <p>Право знать — часть безопасности. Две модели:</p>
+
+  <table>
+    <tr><th>«Темница защиты»</th><th>«Кольцо безопасности» (Hingsburger)</th></tr>
+    <tr><td>Изоляция от отношений</td><td>Человек, который выслушает</td></tr>
+    <tr><td>Сокрытие информации о сексе</td><td>Понимание личных прав</td></tr>
+    <tr><td>Лишение права выбора</td><td>Здоровое представление о себе</td></tr>
+    <tr><td>Исключение из общества</td><td>Сексуальное просвещение · Конфиденциальность · Умение сказать «НЕТ»</td></tr>
+  </table>
+
+  <p>Человек, который умеет отказываться, реже оказывается в ситуации, где его поведение воспринимается как «проблемное».</p>
+
+  <p><strong>Источники:</strong> Аудиозапись 2 (функциональная коммуникация, АДК), Dave Hingsburger, Поведенческий подход ЦЛП</p>
+</section>
+
+<section id="approach4" class="guide-section">
+  <div class="number">Направление 4</div>
+  <h2>Восстановление после инцидента</h2>
+
+  <p><strong>Суть:</strong> Если принудительные меры были применены, работа не заканчивается. Трёхшаговая модель Веддингера (Weddinger Model, Lieselotte Mahler, Charité, Берлин) предлагает чёткий протокол: предотвращение → минимизация → поддержка.</p>
+
+  <h3>Три шага</h3>
+
+  <div class="step-card">
+    <span class="step-num">1</span>
+    <h4>Предотвращение (основная работа)</h4>
+    <p>Анализ среды, функциональный анализ поведения, обучение персонала, раннее выявление признаков нарастания напряжения. Это 80% усилий.</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">2</span>
+    <h4>Минимизация вреда</h4>
+    <p>Если вмешательство необходимо — оно должно быть наименее травматичным и максимально кратким. Используйте наименее ограничительную альтернативу. Помните: любое принуждение оставляет след.</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">3</span>
+    <h4>Поддержка всех участников</h4>
+    <p>После инцидента поддержка нужна трём группам: тому, кого принуждали; тому, кто принуждал; тем, кто наблюдал. Каждая — отдельно и в своём формате.</p>
+  </div>
+
+  <h3>Протокол постинцидентного дебрифинга</h3>
+  <ol>
+    <li><strong>Немедленно после стабилизации:</strong> проверьте физическое и эмоциональное состояние всех участников</li>
+    <li><strong>В течение 24 часов:</strong> проведите индивидуальную беседу с каждым участником (отдельно)</li>
+    <li><strong>В течение 72 часов:</strong> групповая рефлексия команды (без обвинений, в формате «что мы можем сделать иначе»)</li>
+    <li><strong>Задокументируйте:</strong> что произошло, какие альтернативы были испробованы, что можно изменить в среде/протоколах</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Ключевой принцип</strong>
+    <p>Последствия принуждения есть у всех. Персонал, применивший фиксацию, тоже нуждается в поддержке: моральные дилеммы, чувство вины, страх — это реально и требует отдельной работы.</p>
+  </div>
+
+  <p><strong>Источники:</strong> Weddinger Model (Lieselotte Mahler, Charité, Берлин), аудиозапись 1</p>
+</section>
+
+<section id="roadmap" class="guide-section">
+  <div class="number">Внедрение</div>
+  <h2>Дорожная карта: 6–12 месяцев</h2>
+
+  <div class="callout navy">
+    <strong>Главный совет</strong>
+    <p>Не пытайтесь внедрить все четыре направления сразу. Выберите одно отделение и одно направление — и сделайте его хорошо. Результаты появятся быстрее, чем вы ожидаете.</p>
+  </div>
+
+  <h3>Поэтапный план</h3>
+
+  <div class="step-card">
+    <span class="step-num">1</span>
+    <h4>Месяцы 1–2: Аудит</h4>
+    <p>Соберите данные: частота фиксаций, изоляций, PRN медикаментов. Проведите опрос персонала о самых сложных ситуациях. Выявите «горячие точки» — время, место, обстоятельства, в которых инциденты происходят чаще всего.</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">2</span>
+    <h4>Месяцы 1–2: Обучение команды</h4>
+    <p>Проведите вводный тренинг по всем четырём направлениям. Особый акцент — на функциональный анализ поведения и построение контакта. Важно: обучение должно быть практическим, а не лекционным.</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">3</span>
+    <h4>Месяцы 2–6: Пилот на одном отделении</h4>
+    <p>Выберите отделение, готовое к изменениям. Внедряйте выбранные инструменты. Собирайте метрики: количество инцидентов, их тяжесть, использование PRN, удовлетворённость персонала.</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">4</span>
+    <h4>Месяцы 6–7: Анализ и коррекция</h4>
+    <p>Сравните данные «до» и «после». Что сработало? Что не сработало? Скорректируйте подход. Задокументируйте успешные практики.</p>
+  </div>
+  <div class="step-card">
+    <span class="step-num">5</span>
+    <h4>Месяцы 7–12: Масштабирование</h4>
+    <p>Распространите успешный опыт на другие отделения. Обучите внутренних тренеров из числа сотрудников пилотного отделения.</p>
+  </div>
+
+  <h3>Ключевые метрики для отслеживания</h3>
+  <ul>
+    <li>Количество фиксаций в месяц (на 100 человек)</li>
+    <li>Количество изоляций в месяц</li>
+    <li>Объём PRN медикаментов</li>
+    <li>Травматизм персонала (количество инцидентов)</li>
+    <li>Текучесть кадров</li>
+    <li>Количество жалоб и проверок</li>
+  </ul>
+
+  <h3>Ожидаемые результаты</h3>
+  <table>
+    <tr><th>Показатель</th><th>Снижение</th><th>Источник данных</th></tr>
+    <tr><td>Число фиксаций</td><td>30–60%</td><td>Weddinger Model (Charité)</td></tr>
+    <tr><td>Травматизм персонала</td><td>до 2,5×</td><td>Nidotherapy trials</td></tr>
+    <tr><td>PRN медикаменты</td><td>40%</td><td>Пилоты ЦЛП (2018–2025)</td></tr>
+  </table>
+</section>
+
+<section id="resources" class="guide-section">
+  <div class="number">Ресурсы</div>
+  <h2>Что можно использовать для старта</h2>
+
+  <div class="step-card">
+    <h4>📋 NICE NG11 — Клиническое руководство</h4>
+    <p>«Challenging behaviour and learning disabilities: prevention and interventions for people with learning disabilities whose behaviour challenges» (Великобритания, 2015). Полный текст прилагается к материалам. Содержит конкретные рекомендации по оценке, интервенциям и поддержке.</p>
+  </div>
+  <div class="step-card">
+    <h4>🔄 Weddinger Model (Lieselotte Mahler, Charité, Берлин)</h4>
+    <p>Трёхшаговая восстановительная модель: предотвращение → минимизация → поддержка. Разработана в университетской клинике Charité, имеет подтверждённую эффективность.</p>
+  </div>
+  <div class="step-card">
+    <h4>🏠 Nidotherapy (Peter Tyrer)</h4>
+    <p>Метод системного изменения среды как основной терапевтический инструмент. Сайт: <a href="https://nidotherapy.com" target="_blank">nidotherapy.com</a></p>
+  </div>
+  <div class="step-card">
+    <h4>📚 Материалы ЦЛП «Особое детство»</h4>
+    <p>Практические методички по АДК, коммуникации, средовому анализу. Разработаны на основе многолетнего опыта работы. Предоставляются участникам пилотного проекта.</p>
+  </div>
+  <div class="step-card">
+    <h4>🔗 Dave Hingsburger — «Кольцо безопасности»</h4>
+    <p>Авторские материалы по сексуальному просвещению, личной безопасности и праву на отношения для людей с инвалидностью.</p>
+  </div>
+
+  <div class="callout" style="margin-top: 40px;">
+    <strong>Нужна поддержка во внедрении?</strong>
+    <p>ЦЛП «Особое детство» предлагает консультацию, обучение команды и сопровождение пилотного проекта. Свяжитесь с нами: clp@особоедетство.рф</p>
+  </div>
+</section>
+
+</div>
+
+<footer style="text-align: center; padding: 32px; border-top: 1px solid #eef0f2; color: #a0aab4; font-size: 14px;">
+  ЦЛП «Особое детство» · <a href="landing.html" style="color: #1B2A4A;">На главную</a>
+</footer>
+
+</body>
+</html>

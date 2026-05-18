@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Снижение принудительных мер — современные подходы и инструменты</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; color: #1a1a2e; background: #fff; line-height: 1.6; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid #eef0f2; padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between; height: 64px;
+}
+nav .logo { font-weight: 700; font-size: 15px; color: #1B2A4A; letter-spacing: -.3px; }
+nav .logo span { color: #2C6E6F; }
+nav a { text-decoration: none; color: #4a5568; font-size: 14px; font-weight: 500; margin-left: 28px; transition: color .2s; }
+nav a:hover { color: #1B2A4A; }
+.cta-nav {
+  background: #1B2A4A; color: #fff !important; padding: 8px 20px; border-radius: 6px;
+  font-weight: 600; font-size: 13px; transition: background .2s;
+}
+.cta-nav:hover { background: #2C6E6F !important; color: #fff !important; }
+
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  background: linear-gradient(135deg, #f8fafb 0%, #edf1f5 100%);
+  padding: 80px 40px 60px; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -40%; right: -10%; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(44,110,111,.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -20%; left: -5%; width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(27,42,74,.04) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-content { max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.hero h1 {
+  font-size: clamp(36px, 4.5vw, 56px); font-weight: 800; line-height: 1.15; color: #1B2A4A;
+  letter-spacing: -1.5px; margin-bottom: 20px;
+}
+.hero h1 span { color: #2C6E6F; }
+.hero-sub {
+  font-size: clamp(16px, 1.5vw, 20px); color: #4a5568; line-height: 1.7;
+  margin-bottom: 36px; max-width: 480px;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #1B2A4A; color: #fff; text-decoration: none;
+  padding: 16px 36px; border-radius: 8px; font-weight: 600; font-size: 16px;
+  transition: all .25s;
+}
+.hero-cta:hover { background: #2C6E6F; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44,110,111,.3); }
+.hero-stat { margin-top: 24px; color: #636e72; font-size: 14px; }
+.hero-stat strong { color: #1B2A4A; font-size: 18px; }
+
+.hero-right { text-align: center; }
+.hero-big-number {
+  font-size: clamp(80px, 10vw, 140px); font-weight: 800; color: #1B2A4A;
+  line-height: 1; letter-spacing: -4px; margin-bottom: 8px;
+}
+.hero-big-number span { color: #2C6E6F; }
+.hero-big-label {
+  font-size: clamp(16px, 1.8vw, 22px); color: #4a5568; font-weight: 500;
+  max-width: 360px; margin: 0 auto 12px;
+}
+.hero-big-source { font-size: 13px; color: #a0aab4; }
+
+.stats-bar {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: #e2e6ea; border-radius: 12px; overflow: hidden;
+  margin: -40px auto 0; max-width: 1000px; position: relative; z-index: 2;
+}
+.stats-bar > div {
+  background: #fff; padding: 32px 24px; text-align: center;
+}
+.stats-bar .num { font-size: 36px; font-weight: 800; color: #1B2A4A; }
+.stats-bar .num.acc { color: #2C6E6F; }
+.stats-bar .label { font-size: 14px; color: #636e72; margin-top: 4px; }
+
+section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+  color: #2C6E6F; margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(28px, 3vw, 40px); font-weight: 700; color: #1B2A4A;
+  margin-bottom: 16px; letter-spacing: -.8px;
+}
+.section-desc {
+  font-size: 18px; color: #636e72; max-width: 640px; margin-bottom: 48px; line-height: 1.7;
+}
+
+#problem { padding-top: 140px; }
+.problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.problem-card {
+  background: #f8fafb; border-radius: 12px; padding: 32px; border: 1px solid #eef0f2;
+  transition: transform .25s, box-shadow .25s;
+}
+.problem-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(27,42,74,.08); }
+.problem-card .icon { font-size: 28px; margin-bottom: 16px; }
+.problem-card h3 { font-size: 18px; font-weight: 700; color: #1B2A4A; margin-bottom: 12px; }
+.problem-card p { font-size: 15px; color: #636e72; line-height: 1.7; }
+
+#approaches { padding-top: 100px; }
+.approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.approach-card {
+  background: #fff; border: 1px solid #eef0f2; border-radius: 12px; padding: 32px;
+  position: relative; overflow: hidden; transition: transform .25s, box-shadow .25s;
+}
+.approach-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(27,42,74,.06); }
+.approach-card .top-line {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.approach-card .top-line.navy { background: #1B2A4A; }
+.approach-card .top-line.teal { background: #2C6E6F; }
+.approach-card .num {
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+  color: #a0aab4; margin-bottom: 8px;
+}
+.approach-card h3 { font-size: 20px; font-weight: 700; color: #1B2A4A; margin-bottom: 10px; }
+.approach-card p { font-size: 15px; color: #636e72; line-height: 1.7; }
+
+#roadmap { padding-top: 100px; }
+.roadmap { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+.roadmap-step {
+  flex: 1; min-width: 160px; max-width: 200px; text-align: center;
+  position: relative; padding: 20px 16px;
+}
+.roadmap-step::after {
+  content: '\2192'; position: absolute; right: -12px; top: 50%; transform: translateY(-50%);
+  font-size: 18px; color: #c5cad0;
+}
+.roadmap-step:last-child::after { display: none; }
+.roadmap-circle {
+  width: 52px; height: 52px; border-radius: 50%; background: #1B2A4A; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 18px; margin: 0 auto 12px;
+}
+.roadmap-step:nth-child(3) .roadmap-circle { background: #2C6E6F; }
+.roadmap-step h4 { font-size: 14px; font-weight: 700; color: #1B2A4A; margin-bottom: 4px; }
+.roadmap-step p { font-size: 13px; color: #636e72; }
+.roadmap-step .time {
+  display: inline-block; font-size: 11px; font-weight: 600; color: #2C6E6F;
+  background: rgba(44,110,111,.08); padding: 3px 10px; border-radius: 20px; margin-top: 8px;
+}
+
+.quote-section {
+  background: #1B2A4A; color: #fff; padding: 80px 40px; text-align: center;
+  margin-top: 60px;
+}
+.quote-section blockquote {
+  font-size: clamp(20px, 2.5vw, 28px); font-weight: 500; line-height: 1.5;
+  max-width: 720px; margin: 0 auto 16px; font-style: italic;
+}
+.quote-section cite { font-size: 14px; color: rgba(255,255,255,.5); font-style: normal; }
+
+#cta {
+  background: linear-gradient(135deg, #f8fafb, #edf1f5);
+  border-radius: 16px; padding: 80px 60px; margin: 80px auto;
+  text-align: center; max-width: 900px;
+}
+#cta h2 { font-size: 32px; font-weight: 700; color: #1B2A4A; margin-bottom: 12px; }
+#cta p { font-size: 18px; color: #636e72; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: #1B2A4A; color: #fff; text-decoration: none; padding: 16px 36px;
+  border-radius: 8px; font-weight: 600; font-size: 16px; transition: all .25s;
+}
+.btn-primary:hover { background: #2C6E6F; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44,110,111,.3); }
+.btn-secondary {
+  background: #fff; color: #1B2A4A; text-decoration: none; padding: 16px 36px;
+  border-radius: 8px; font-weight: 600; font-size: 16px; border: 1px solid #e2e6ea; transition: all .25s;
+}
+.btn-secondary:hover { border-color: #1B2A4A; transform: translateY(-2px); }
+
+footer {
+  text-align: center; padding: 40px; color: #a0aab4; font-size: 14px;
+  border-top: 1px solid #eef0f2;
+}
+footer a { color: #1B2A4A; text-decoration: none; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  nav a { margin-left: 16px; font-size: 13px; }
+  nav .cta-nav { padding: 6px 14px; font-size: 12px; }
+  .hero { padding: 100px 20px 40px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-sub { max-width: 100%; }
+  .stats-bar { grid-template-columns: 1fr; margin-top: 0; border-radius: 0; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .approach-grid { grid-template-columns: 1fr; }
+  .roadmap { flex-direction: column; align-items: center; }
+  .roadmap-step::after { display: none; }
+  section { padding: 60px 20px; }
+  #cta { padding: 40px 24px; margin: 40px 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">ЦЛП <span>Особое детство</span></div>
+  <div>
+    <a href="#problem">Проблема</a>
+    <a href="#approaches">Подходы</a>
+    <a href="guide.html">Гайд</a>
+    <a href="#roadmap">Дорожная карта</a>
+    <a href="#cta" class="cta-nav">Начать</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-grid">
+      <div>
+        <h1>Снижение принудительных мер:<br><span>современные подходы и инструменты</span></h1>
+        <p class="hero-sub">
+          Практическое руководство для руководителей и специалистов. Как системно снизить использование фиксаций и изоляции, изменить практику не на словах, а на деле.
+        </p>
+        <a href="guide.html" class="hero-cta">
+          Читать практический гайд
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L15 8L8 15M15 8H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <p class="hero-stat"><strong>14 слайдов</strong> готовой презентации · Опора на NICE NG11, UN CRPD, международный опыт</p>
+      </div>
+      <div class="hero-right">
+        <div class="hero-big-number">30<span>–</span>60<span>%</span></div>
+        <div class="hero-big-label">на столько можно снизить количество фиксаций</div>
+        <div class="hero-big-source">Данные: Weddinger Model, NICE NG11, пилоты ЦЛП</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div><div class="num">30–60<small>%</small></div><div class="label">снижение числа фиксаций</div></div>
+  <div><div class="num acc">до 2,5×</div><div class="label">снижение травматизма персонала</div></div>
+  <div><div class="num">40<small>%</small></div><div class="label">снижение PRN медикаментов</div></div>
+</div>
+
+<section id="problem">
+  <div class="section-label">Проблема</div>
+  <h2 class="section-title">Почему это важно</h2>
+  <p class="section-desc">
+    Принудительные меры в ПНИ — не изолированный инцидент, а симптом системных проблем. Их решение снижает риски, улучшает климат и соответствует современным стандартам качества помощи.
+  </p>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="icon">🌍</div>
+      <h3>Международные стандарты</h3>
+      <p>Рекомендации ВОЗ, клиническое руководство NICE NG11 и Конвенция ООН о правах инвалидов (ст. 15) чётко указывают: снижение принуждения — мировой тренд.</p>
+    </div>
+    <div class="problem-card">
+      <div class="icon">🏠</div>
+      <h3>Российский контекст</h3>
+      <p>Высокий уровень фиксаций в ПНИ, дефицит альтернативных методов, риски жалоб, проверок и репутационных потерь.</p>
+    </div>
+    <div class="problem-card">
+      <div class="icon">⚠️</div>
+      <h3>Симптом, а не причина</h3>
+      <p>Принуждение — маркер неблагополучия: неподходящая среда, дефицит навыков персонала, отсутствие системы профилактики.</p>
+    </div>
+  </div>
+</section>
+
+<section id="approaches">
+  <div class="section-label">Четыре направления</div>
+  <h2 class="section-title">Системный подход к снижению принуждения</h2>
+  <p class="section-desc">
+    Четыре взаимосвязанных направления, которые в совокупности позволяют системно снизить использование принудительных мер.
+  </p>
+  <div class="approach-grid">
+    <div class="approach-card">
+      <div class="top-line navy"></div>
+      <div class="num">Направление 1</div>
+      <h3>Анализ и изменение среды</h3>
+      <p>Поведение — это коммуникация. Функциональный анализ, выявление триггеров и изменение трёх слоёв среды: физической, социальной, временной (Nidotherapy).</p>
+    </div>
+    <div class="approach-card">
+      <div class="top-line teal"></div>
+      <div class="num">Направление 2</div>
+      <h3>Качество контакта и отношений</h3>
+      <p>«Не входить в палату без разрешения». Исследования показывают: характер контакта напрямую влияет на частоту и тяжесть инцидентов.</p>
+    </div>
+    <div class="approach-card">
+      <div class="top-line navy"></div>
+      <div class="num">Направление 3</div>
+      <h3>Коммуникация и АДК</h3>
+      <p>Проблемное поведение = попытка сообщить. Тренинг функциональной коммуникации, инструменты АДК: PECS, коммуникативные таблицы, голосовые устройства.</p>
+    </div>
+    <div class="approach-card">
+      <div class="top-line teal"></div>
+      <div class="num">Направление 4</div>
+      <h3>Восстановление после инцидента</h3>
+      <p>Трёхшаговая модель: предотвращение → минимизация → поддержка всех участников. Последствия принуждения есть у всех.</p>
+    </div>
+  </div>
+</section>
+
+<div class="quote-section">
+  <blockquote>«Не входить в палату без разрешения»</blockquote>
+  <cite>Gwen Schulz — Relationship-based Psychiatry</cite>
+</div>
+
+<section id="roadmap">
+  <div class="section-label">Дорожная карта</div>
+  <h2 class="section-title">Как внедрить: 5 шагов</h2>
+  <p class="section-desc">
+    От аудита до масштабирования за 6–12 месяцев.
+  </p>
+  <div class="roadmap">
+    <div class="roadmap-step">
+      <div class="roadmap-circle">1</div>
+      <h4>Аудит</h4>
+      <p>Сбор данных, анализ инцидентов</p>
+      <div class="time">1–2 мес.</div>
+    </div>
+    <div class="roadmap-step">
+      <div class="roadmap-circle">2</div>
+      <h4>Обучение</h4>
+      <p>Команды по всем направлениям</p>
+      <div class="time">1–2 мес.</div>
+    </div>
+    <div class="roadmap-step">
+      <div class="roadmap-circle">3</div>
+      <h4>Пилот</h4>
+      <p>На одном отделении, метрики до/после</p>
+      <div class="time">3–4 мес.</div>
+    </div>
+    <div class="roadmap-step">
+      <div class="roadmap-circle">4</div>
+      <h4>Коррекция</h4>
+      <p>Сравнение с базой, корректировка</p>
+      <div class="time">1–2 мес.</div>
+    </div>
+    <div class="roadmap-step">
+      <div class="roadmap-circle">5</div>
+      <h4>Масштаб</h4>
+      <p>Распространение на все отделения</p>
+      <div class="time">3–6 мес.</div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <h2>Давайте работать вместе</h2>
+  <p>Мы предлагаем готовые материалы, обучение команды и сопровождение пилотного проекта.</p>
+  <div class="cta-buttons">
+    <a href="guide.html" class="btn-primary">Читать практический гайд</a>
+    <a href="#" class="btn-secondary">Записаться на консультацию</a>
+  </div>
+</section>
+
+<footer>
+  ЦЛП «Особое детство» — <a href="mailto:clp@особоедетство.рф">clp@особоедетство.рф</a>
+</footer>
+
+</body>
+</html>
