@@ -5,125 +5,184 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Практическое руководство — Снижение принудительных мер</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+
 body {
-  font-family: 'Inter', -apple-system, sans-serif; color: #1a1a2e; background: #fafbfc;
-  line-height: 1.7;
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  color: #2d2d2d; background: #f7f5f0; line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Header */
+/* ===== HEADER (book-like) ===== */
 .guide-header {
-  background: #1B2A4A; color: #fff; padding: 80px 40px 60px; text-align: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: #fff; padding: clamp(60px, 8vw, 100px) max(20px, 4vw) clamp(40px, 5vw, 60px);
+  text-align: center; position: relative; border-bottom: 4px solid #b8860b;
+}
+.guide-header::after {
+  content: '✦'; position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%);
+  font-size: 24px; color: #b8860b; background: #f7f5f0;
+  width: 40px; height: 40px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center;
 }
 .guide-header h1 {
-  font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; margin-bottom: 12px;
-  letter-spacing: -1px;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(30px, 4vw, 48px); font-weight: 800; letter-spacing: -.5px;
+  margin-bottom: 12px;
 }
-.guide-header p {
-  font-size: 18px; color: rgba(255,255,255,.65); max-width: 600px; margin: 0 auto;
+.guide-header .subtitle {
+  font-size: clamp(16px, 1.5vw, 20px); color: rgba(255,255,255,.55);
+  max-width: 560px; margin: 0 auto;
 }
 .guide-header .meta {
-  margin-top: 24px; font-size: 14px; color: rgba(255,255,255,.4);
+  margin-top: 20px; font-size: 14px; color: rgba(255,255,255,.35);
+  font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  text-transform: uppercase; font-weight: 600;
 }
 
-/* Navigation */
+/* ===== NAV (minimal, book-like) ===== */
 .guide-nav {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
-  border-bottom: 1px solid #eef0f2; padding: 0 40px;
-  display: flex; align-items: center; gap: 24px; overflow-x: auto;
-  height: 56px;
+  background: rgba(247,245,240,.97); backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e2ddd2;
+  display: flex; align-items: center; gap: 20px; overflow-x: auto;
+  padding: 0 max(16px, 4vw); height: 52px;
+  font-family: 'Inter', sans-serif;
 }
 .guide-nav a {
-  text-decoration: none; color: #636e72; font-size: 13px; font-weight: 500;
-  white-space: nowrap; transition: color .2s;
+  text-decoration: none; color: #6b6b6b; font-size: 13px; font-weight: 600;
+  white-space: nowrap; text-transform: uppercase; letter-spacing: .8px;
+  transition: color .2s;
 }
-.guide-nav a:hover { color: #1B2A4A; }
+.guide-nav a:hover { color: #b8860b; }
 .guide-nav .back {
-  font-weight: 600; color: #2C6E6F; margin-right: auto;
+  color: #b8860b; margin-right: auto; font-weight: 700; letter-spacing: 0;
+  text-transform: none; font-size: 13px;
 }
 
-/* Container */
-.container { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; }
+/* ===== CONTAINER (like a book page) ===== */
+.container {
+  max-width: 760px; margin: 0 auto; padding: clamp(32px, 5vw, 64px) max(20px, 4vw) 80px;
+}
 
-/* Sections */
-.guide-section { margin-bottom: 60px; }
+/* ===== SECTIONS ===== */
+.guide-section {
+  margin-bottom: 56px; page-break-inside: avoid;
+}
 .guide-section .number {
-  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
-  color: #2C6E6F; margin-bottom: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px;
+  color: #b8860b; margin-bottom: 6px;
 }
 .guide-section h2 {
-  font-size: clamp(24px, 2.5vw, 32px); font-weight: 700; color: #1B2A4A;
-  margin-bottom: 20px; letter-spacing: -.5px;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(26px, 3vw, 34px); font-weight: 700; color: #1a1a1a;
+  margin-bottom: 20px; letter-spacing: -.3px; line-height: 1.2;
 }
 .guide-section h3 {
-  font-size: 20px; font-weight: 700; color: #1B2A4A; margin-top: 32px; margin-bottom: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px; font-weight: 700; color: #1a1a1a;
+  margin-top: 36px; margin-bottom: 12px; letter-spacing: -.2px;
 }
-.guide-section p { font-size: 16px; color: #4a5568; margin-bottom: 16px; }
-.guide-section ul, .guide-section ol { font-size: 16px; color: #4a5568; padding-left: 24px; margin-bottom: 16px; }
+.guide-section p { font-size: 17px; color: #3d3d3d; margin-bottom: 16px; }
+.guide-section ul, .guide-section ol {
+  font-size: 17px; color: #3d3d3d; padding-left: 28px; margin-bottom: 16px;
+}
 .guide-section li { margin-bottom: 8px; }
 
-/* Cards */
+/* ===== CALLOUT ===== */
 .callout {
-  background: #f0f5f7; border-left: 4px solid #2C6E6F; border-radius: 0 8px 8px 0;
-  padding: 20px 24px; margin: 24px 0;
+  background: #fff; border: 1px solid #e2ddd2; border-left: 5px solid #b8860b;
+  padding: 24px 28px; margin: 28px 0; border-radius: 0 6px 6px 0;
 }
-.callout strong { color: #1B2A4A; display: block; margin-bottom: 4px; }
-.callout p { margin-bottom: 0; font-size: 15px; }
+.callout strong {
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a; display: block; margin-bottom: 6px; font-size: 15px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.callout p { margin-bottom: 0; font-size: 16px; color: #4a4a4a; }
+.callout.navy { border-left-color: #1a1a1a; }
 
-.callout.navy { border-left-color: #1B2A4A; }
-
+/* ===== CHECKLIST ===== */
 .checklist { list-style: none; padding-left: 0 !important; }
 .checklist li {
-  padding: 10px 16px 10px 40px; position: relative; border-bottom: 1px solid #eef0f2;
+  padding: 12px 16px 12px 44px; position: relative;
+  border-bottom: 1px solid #ede8e0; font-size: 16px; color: #3d3d3d;
 }
 .checklist li::before {
-  content: ''; position: absolute; left: 12px; top: 14px;
-  width: 16px; height: 16px; border: 2px solid #2C6E6F; border-radius: 3px;
+  content: ''; position: absolute; left: 16px; top: 16px;
+  width: 16px; height: 16px; border: 2px solid #b8860b; border-radius: 3px;
 }
 
-/* Step cards */
+/* ===== STEP CARDS (book-style) ===== */
 .step-card {
-  background: #fff; border: 1px solid #eef0f2; border-radius: 12px;
-  padding: 28px; margin-bottom: 16px;
+  background: #fff; border: 1px solid #e2ddd2; border-radius: 0;
+  padding: 28px 32px; margin-bottom: 12px; position: relative;
+}
+.step-card::before {
+  content: ''; position: absolute; top: 0; left: 0; bottom: 0;
+  width: 3px; background: #b8860b;
 }
 .step-card .step-num {
-  display: inline-block; background: #1B2A4A; color: #fff;
-  width: 28px; height: 28px; border-radius: 50%; text-align: center;
-  line-height: 28px; font-size: 14px; font-weight: 700; margin-right: 10px;
+  display: inline-block; background: #1a1a1a; color: #fff;
+  width: 30px; height: 30px; text-align: center; line-height: 30px;
+  font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; margin-right: 12px;
 }
-.step-card h4 { display: inline; font-size: 18px; font-weight: 700; color: #1B2A4A; }
-.step-card p { margin-top: 12px; font-size: 15px; color: #636e72; }
+.step-card h4 {
+  display: inline; font-family: 'Inter', sans-serif;
+  font-size: 18px; font-weight: 700; color: #1a1a1a;
+}
+.step-card p { margin-top: 12px; font-size: 16px; color: #4a4a4a; }
 
-/* Table */
+/* ===== TABLES ===== */
 table {
-  width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px;
+  width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 15px;
+  font-family: 'Inter', sans-serif;
 }
 th {
-  background: #1B2A4A; color: #fff; padding: 12px 16px; text-align: left;
-  font-weight: 600;
+  background: #1a1a1a; color: #fff; padding: 12px 16px; text-align: left;
+  font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: .5px;
 }
 td {
-  padding: 12px 16px; border-bottom: 1px solid #eef0f2; color: #4a5568;
+  padding: 12px 16px; border-bottom: 1px solid #e2ddd2;
+  color: #3d3d3d; font-size: 15px;
 }
-tr:nth-child(even) td { background: #f8f9fa; }
+tr:nth-child(even) td { background: rgba(0,0,0,.02); }
 
-/* Print */
+/* ===== FOOTER ===== */
+footer {
+  text-align: center; padding: 40px max(20px, 4vw); color: #8a8a8a;
+  font-size: 14px; border-top: 1px solid #e2ddd2;
+  font-family: 'Inter', sans-serif;
+}
+footer a { color: #b8860b; text-decoration: none; font-weight: 600; }
+
+/* ===== PRINT ===== */
 @media print {
   .guide-nav { display: none; }
-  .guide-header { padding: 40px 20px; }
-  body { background: #fff; font-size: 12pt; }
-  .container { max-width: 100%; padding: 24px; }
-  .step-card { break-inside: avoid; }
+  .guide-header { padding: 40px 20px 32px; }
+  .guide-header::after { display: none; }
+  body { background: #fff; font-size: 11pt; color: #000; }
+  .container { max-width: 100%; padding: 20px; }
+  .step-card { break-inside: avoid; border: 1px solid #ccc; }
+  .callout { break-inside: avoid; }
+  .guide-section { break-inside: avoid; }
+  table { font-size: 9pt; }
+  th { background: #333; }
+  a { color: #000 !important; text-decoration: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
 }
 
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
-  .guide-header { padding: 48px 20px 40px; }
-  .guide-nav { padding: 0 16px; gap: 16px; }
-  .container { padding: 24px 16px; }
+  .guide-nav a:not(.back) { display: none; }
+  .guide-nav { height: 48px; }
+  .guide-section p { font-size: 16px; }
+  .step-card { padding: 20px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px 10px; }
 }
 </style>
 </head>
@@ -131,18 +190,18 @@ tr:nth-child(even) td { background: #f8f9fa; }
 
 <header class="guide-header">
   <h1>Снижение принудительных мер</h1>
-  <p>Практическое руководство для руководителей и специалистов</p>
+  <p class="subtitle">Практическое руководство для руководителей и специалистов</p>
   <div class="meta">ЦЛП «Особое детство» · 2026</div>
 </header>
 
 <nav class="guide-nav">
-  <a href="landing.html" class="back">← На лендинг</a>
+  <a href="index.html" class="back">← На лендинг</a>
   <a href="#intro">Введение</a>
-  <a href="#approach1">1. Среда</a>
-  <a href="#approach2">2. Контакт</a>
-  <a href="#approach3">3. Коммуникация</a>
-  <a href="#approach4">4. Восстановление</a>
-  <a href="#roadmap">Дорожная карта</a>
+  <a href="#approach1">Среда</a>
+  <a href="#approach2">Контакт</a>
+  <a href="#approach3">Коммуникация</a>
+  <a href="#approach4">Восстановление</a>
+  <a href="#roadmap">План</a>
   <a href="#resources">Ресурсы</a>
 </nav>
 
@@ -362,10 +421,10 @@ tr:nth-child(even) td { background: #f8f9fa; }
 
   <h3>Протокол постинцидентного дебрифинга</h3>
   <ol>
-    <li><strong>Немедленно после стабилизации:</strong> проверьте физическое и эмоциональное состояние всех участников</li>
-    <li><strong>В течение 24 часов:</strong> проведите индивидуальную беседу с каждым участником (отдельно)</li>
-    <li><strong>В течение 72 часов:</strong> групповая рефлексия команды (без обвинений, в формате «что мы можем сделать иначе»)</li>
-    <li><strong>Задокументируйте:</strong> что произошло, какие альтернативы были испробованы, что можно изменить в среде/протоколах</li>
+    <li><strong>Немедленно после стабилизации:</strong> проверьте физическое и эмоциональное состояние всех участников.</li>
+    <li><strong>В течение 24 часов:</strong> проведите индивидуальную беседу с каждым участником (отдельно).</li>
+    <li><strong>В течение 72 часов:</strong> групповая рефлексия команды (без обвинений, в формате «что мы можем сделать иначе»).</li>
+    <li><strong>Задокументируйте:</strong> что произошло, какие альтернативы были испробованы, что можно изменить в среде/протоколах.</li>
   </ol>
 
   <div class="callout">
@@ -437,23 +496,23 @@ tr:nth-child(even) td { background: #f8f9fa; }
   <h2>Что можно использовать для старта</h2>
 
   <div class="step-card">
-    <h4>📋 NICE NG11 — Клиническое руководство</h4>
-    <p>«Challenging behaviour and learning disabilities: prevention and interventions for people with learning disabilities whose behaviour challenges» (Великобритания, 2015). Полный текст прилагается к материалам. Содержит конкретные рекомендации по оценке, интервенциям и поддержке.</p>
+    <h4>NICE NG11 — Клиническое руководство</h4>
+    <p>«Challenging behaviour and learning disabilities: prevention and interventions for people with learning disabilities whose behaviour challenges» (Великобритания, 2015). Полный текст прилагается к материалам.</p>
   </div>
   <div class="step-card">
-    <h4>🔄 Weddinger Model (Lieselotte Mahler, Charité, Берлин)</h4>
+    <h4>Weddinger Model (Lieselotte Mahler, Charité, Берлин)</h4>
     <p>Трёхшаговая восстановительная модель: предотвращение → минимизация → поддержка. Разработана в университетской клинике Charité, имеет подтверждённую эффективность.</p>
   </div>
   <div class="step-card">
-    <h4>🏠 Nidotherapy (Peter Tyrer)</h4>
-    <p>Метод системного изменения среды как основной терапевтический инструмент. Сайт: <a href="https://nidotherapy.com" target="_blank">nidotherapy.com</a></p>
+    <h4>Nidotherapy (Peter Tyrer)</h4>
+    <p>Метод системного изменения среды как основной терапевтический инструмент. Сайт: nidotherapy.com</p>
   </div>
   <div class="step-card">
-    <h4>📚 Материалы ЦЛП «Особое детство»</h4>
-    <p>Практические методички по АДК, коммуникации, средовому анализу. Разработаны на основе многолетнего опыта работы. Предоставляются участникам пилотного проекта.</p>
+    <h4>Материалы ЦЛП «Особое детство»</h4>
+    <p>Практические методички по АДК, коммуникации, средовому анализу. Предоставляются участникам пилотного проекта.</p>
   </div>
   <div class="step-card">
-    <h4>🔗 Dave Hingsburger — «Кольцо безопасности»</h4>
+    <h4>Dave Hingsburger — «Кольцо безопасности»</h4>
     <p>Авторские материалы по сексуальному просвещению, личной безопасности и праву на отношения для людей с инвалидностью.</p>
   </div>
 
@@ -465,8 +524,8 @@ tr:nth-child(even) td { background: #f8f9fa; }
 
 </div>
 
-<footer style="text-align: center; padding: 32px; border-top: 1px solid #eef0f2; color: #a0aab4; font-size: 14px;">
-  ЦЛП «Особое детство» · <a href="landing.html" style="color: #1B2A4A;">На главную</a>
+<footer>
+  ЦЛП «Особое детство» · <a href="index.html">На главную</a>
 </footer>
 
 </body>
